@@ -12,6 +12,7 @@ model User {
   email       String
   password    String
   credentials Credential[]
+  safeNotes   SafeNote[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
 
@@ -32,4 +33,18 @@ model Credential{
   @@unique([userId,title])
 
   @@map("credentials")
+}
+
+model SafeNote {
+  id          Int @id @default(autoincrement())
+  userId      Int
+  owner       User @relation(fields: [userId], references: [id]) 
+  title       String
+  content     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  
+  @@unique([userId,title])
+  
+  @@map("safenotes")
 }
