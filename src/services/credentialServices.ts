@@ -8,3 +8,18 @@ export async function createCredential(credential: credential){
     const createCredential = await credentialRepository.create(newCredential);     
     return createCredential;  
 }
+
+export async function getCredentials(credentialId: number, userId: number){
+    const credentials = await credentialRepository.getCredentials(credentialId, userId);
+    const userCredentials = credentials.filter(credential => credential.userId === userId);
+    if (userCredentials.length === 0) throw {
+        status: 404,
+        message: "Credentials not found. Please verify if credential id is correct or is yours."
+    }
+
+    const userCredentialsWithDecryptedPassword = userCredentials.map<credential>(credential => {
+        const decryptedPassword = cryptr.decrypt(credential.password);
+        return {...credential, password: decryptedPassword}
+    })
+    return userCredentialsWithDecryptedPassword;
+}

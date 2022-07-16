@@ -19,15 +19,15 @@ model User {
 }
 
 model Credential{
-  id          Int @id @default(autoincrement())
-  userId      Int
-  onwer       User @relation(fields: [userId], references: [id]) 
-  username    String
-  password       String
-  url          String
-  title        String 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
+  id              Int @id @default(autoincrement())
+  userId          Int
+  onwer           User @relation(fields: [userId], references: [id]) 
+  username        String
+  password        String
+  url             String
+  title           String 
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now())
 
   @@unique([userId,title])
 

@@ -9,3 +9,10 @@ export async function createCredential(req: Request, res: Response) {
     const createdCredential = await credentialServices.createCredential(credentials)
     res.status(201).send({id: createdCredential.id})
 }
+
+export async function getCredential(req: Request, res: Response) {
+    const { userId } = res.locals.user
+    const { credentialId } = req.params
+    const credentials = await credentialServices.getCredentials(parseInt(credentialId), userId)
+    res.status(200).send(credentials)
+}

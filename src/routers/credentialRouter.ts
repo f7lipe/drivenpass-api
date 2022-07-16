@@ -12,6 +12,11 @@ credentialRouter.post(
     credentialController.createCredential
 )
 
+credentialRouter.get(
+    "/credential/:credentialId",
+    tokenValidation.validToken,
+    credentialController.getCredential
+)
 
 
 export default credentialRouter;
