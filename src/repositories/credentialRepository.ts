@@ -20,3 +20,13 @@ export async function getCredentials(id: number, userId: number) {
 
     return credentials;
 }
+
+export async function deleteCredential(id: number) {
+
+    await prisma.credential.delete({
+        where: {
+            id
+        }
+    });
+
+}

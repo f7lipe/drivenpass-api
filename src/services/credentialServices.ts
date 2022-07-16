@@ -23,3 +23,13 @@ export async function getCredentials(credentialId: number, userId: number){
     })
     return userCredentialsWithDecryptedPassword;
 }
+
+export async function deleteCredential(credentialId: number, userId: number){
+    const credentials = await getCredentials(credentialId, userId);
+    if (credentials.length === 0) throw {
+        status: 404,
+        message: "Credentials not found. Please verify if credential id is correct or is yours."
+    }
+
+    await credentialRepository.deleteCredential(credentialId);
+}
