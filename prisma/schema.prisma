@@ -14,6 +14,7 @@ model User {
   credentials Credential[]
   safeNotes   SafeNote[]
   credtiCards CreditCard[]
+  wifis       Wifi[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
 
@@ -69,6 +70,23 @@ model CreditCard {
   
   @@map("creditcards")
 }
+
+
+model Wifi {
+  id          Int @id @default(autoincrement())
+  userId      Int
+  owner       User @relation(fields: [userId], references: [id])
+  ssid        String
+  password    String
+  title       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  
+  @@unique([userId,ssid])
+  
+  @@map("wifis")
+}
+
 
 enum CardType {
   Debit
