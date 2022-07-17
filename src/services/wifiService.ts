@@ -22,3 +22,13 @@ export async function get(wifiId: number, userId: number) {
     })
     return decryptedWifi;
 }
+
+
+export async function deleteOne(wifiId: number, userId: number) {
+    const wifi = await wifiRepository.getMany(wifiId, userId);
+    if(wifi.length === 0) throw {
+        status: 404,
+        message: "Wifi not found"
+    }
+    await wifiRepository.deleteOne(wifiId);
+}

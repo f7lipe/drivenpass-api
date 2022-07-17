@@ -20,5 +20,11 @@ wifiRouter.get(
     wifiController.get
 )
 
+wifiRouter.delete(
+    "/wifi/:wifiId",
+    validToken,
+    wifiController.deleteOne
+)
+
 
 export default wifiRouter;
