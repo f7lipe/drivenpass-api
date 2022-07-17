@@ -16,3 +16,10 @@ export async function get(req: Request, res: Response) {
     const creditCards = await creditCardService.get(parseInt(creditCardId), userId);
     res.status(200).send(creditCards);
 }
+
+export async function deleteOne(req: Request, res: Response) {
+    const { userId } = res.locals.user;
+    const { creditCardId } = req.params;
+    await creditCardService.deleteOne(parseInt(creditCardId), userId);
+    res.sendStatus(200);
+}

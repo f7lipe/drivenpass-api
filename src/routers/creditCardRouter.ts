@@ -18,4 +18,10 @@ creditCardRouter.get(
     creditCardController.get
 )
 
+creditCardRouter.delete(
+    "/credit-card/:creditCardId",
+    validToken,
+    creditCardController.deleteOne
+)
+
 export default creditCardRouter

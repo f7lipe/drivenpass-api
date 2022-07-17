@@ -16,3 +16,11 @@ export async function getMany(id: number, userId: number) {
     
     return prisma.creditCard.findMany(queryBuilder)
 }
+
+export async function deleteOne(id: number) {
+  return prisma.creditCard.delete({
+    where: {
+      id,
+    },
+  });
+}

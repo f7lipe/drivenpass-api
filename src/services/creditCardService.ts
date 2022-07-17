@@ -30,3 +30,12 @@ export async function get(id: number, userId: number) {
         
     return userCreditCardsWithDecryptedCVVAndPassword
 }
+
+export async function deleteOne(id: number, userId: number) {
+    const userCreditCards = await creditCardRepository.getMany(id, userId)
+    if(userCreditCards.length === 0 ) throw {
+        status: 404,
+        message: "No credit cards found"
+    }
+    await creditCardRepository.deleteOne(id)
+}
