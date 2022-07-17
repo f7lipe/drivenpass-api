@@ -13,6 +13,7 @@ model User {
   password    String
   credentials Credential[]
   safeNotes   SafeNote[]
+  credtiCards CreditCard[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
 
@@ -47,4 +48,30 @@ model SafeNote {
   @@unique([userId,title])
   
   @@map("safenotes")
+}
+
+model CreditCard {
+  id          Int @id @default(autoincrement())
+  userId      Int
+  owner       User @relation(fields: [userId], references: [id])
+  name        String 
+  number      String
+  expiry      String
+  cvv         String
+  password    String
+  isVirtual   Boolean
+  type        CardType
+  title       String 
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  
+  @@unique([userId,number])
+  
+  @@map("creditcards")
+}
+
+enum CardType {
+  Debit
+  Credit
+  Both
 }
