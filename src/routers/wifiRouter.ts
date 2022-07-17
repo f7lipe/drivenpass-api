@@ -14,4 +14,11 @@ wifiRouter.post(
     wifiController.create
 )
 
+wifiRouter.get(
+    "/wifi/:wifiId",
+    validToken,
+    wifiController.get
+)
+
+
 export default wifiRouter;

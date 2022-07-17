@@ -9,3 +9,10 @@ export async function createOne(wifi: wifi) {
         }
     });
 }
+
+export async function getMany(wifiId: number, userId: number) {
+    let queryBuilder: Object 
+    if(wifiId) queryBuilder = { where: { id: wifiId } }
+    else queryBuilder = { where: { userId } }
+    return await prisma.wifi.findMany(queryBuilder);
+}
