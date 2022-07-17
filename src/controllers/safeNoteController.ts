@@ -9,3 +9,10 @@ export async function createSafeNote(req: Request, res: Response) {
     await safeNoteService.createSafeNote(safeNote);
     res.sendStatus(201);
 }
+
+export async function getSafeNotes(req: Request, res: Response) {
+    const { userId } = res.locals.user;
+    const { safeNoteId } = req.params;
+    const safeNotes = await safeNoteService.getSafeNotes(parseInt(safeNoteId), userId);
+    res.status(200).send(safeNotes)
+}

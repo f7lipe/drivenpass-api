@@ -1,7 +1,7 @@
 import { prisma } from "../config/database.js";
 import { credential } from "../schemas/credentialSchema.js";
 
-export async function create(credential: credential) {
+export async function createOne(credential: credential) {
    const createCredential =  await prisma.credential.create({
         data: {
             ...credential
@@ -11,7 +11,7 @@ export async function create(credential: credential) {
     return createCredential;
 }
 
-export async function getCredentials(id: number, userId: number) {
+export async function getMany(id: number, userId: number) {
     let queryBuilder: Object
     if (id) queryBuilder = { where:{id} } 
     else queryBuilder = { where:{userId} }
@@ -21,7 +21,7 @@ export async function getCredentials(id: number, userId: number) {
     return credentials;
 }
 
-export async function deleteCredential(id: number) {
+export async function deleteOne(id: number) {
 
     await prisma.credential.delete({
         where: {

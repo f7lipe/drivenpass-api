@@ -31,6 +31,6 @@ export async function signin(email: string, password: string) {
 
 function createToken(userId: number) {
   return jwt.sign({ userId }, process.env.JWT_SECRET, {
-    expiresIn: '1h',
+    expiresIn: '12h',
   });
 }
