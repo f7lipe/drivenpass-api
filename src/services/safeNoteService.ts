@@ -14,3 +14,13 @@ export async function getSafeNotes(safeNoteId: number, userId: number) {
     }
     return safeNotes;
 }
+
+export async function deleteSafeNote(safeNoteId: number, userId: number) {
+
+    const safeNotes = await getSafeNotes(safeNoteId, userId);
+    if(safeNotes.length === 0) throw {
+        status: 404,
+        message: "Safe notes not found. Please verify if safe note id is correct or is yours."
+    }
+    await safeNoteRepository.deleteOne(safeNoteId);
+}

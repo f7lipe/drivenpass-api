@@ -18,4 +18,10 @@ safeNoteRouter.get(
     safeNoteController.getSafeNotes
 )
 
+safeNoteRouter.delete(
+    "/safenote/:safeNoteId",
+    validToken,
+    safeNoteController.deleteSafeNote
+)
+
 export default safeNoteRouter

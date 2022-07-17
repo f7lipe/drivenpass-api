@@ -19,3 +19,11 @@ export async function getMany(id: number, userId: number) {
 
     return safeNotes;
 }
+
+export async function deleteOne(id: number) {
+    await prisma.safeNote.delete({
+        where: {
+            id
+        }
+    })
+}
