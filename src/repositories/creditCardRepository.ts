@@ -8,3 +8,11 @@ export async function createOne(creditCard: creditCard) {
     },
   });
 }
+
+export async function getMany(id: number, userId: number) {
+    let queryBuilder: Object
+    if (id) queryBuilder = { where:{id} } 
+    else queryBuilder = { where:{userId} }
+    
+    return prisma.creditCard.findMany(queryBuilder)
+}

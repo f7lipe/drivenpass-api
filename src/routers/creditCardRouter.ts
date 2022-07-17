@@ -12,4 +12,10 @@ creditCardRouter.post(
     creditCardController.create
 )
 
+creditCardRouter.get(
+    "/credit-card/:creditCardId",
+    validToken,
+    creditCardController.get
+)
+
 export default creditCardRouter

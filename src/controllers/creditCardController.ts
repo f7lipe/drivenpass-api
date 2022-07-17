@@ -8,3 +8,11 @@ export async function create(req: Request, res: Response) {
     await creditCardService.create(creditCard);
     res.sendStatus(201);
 }
+
+
+export async function get(req: Request, res: Response) {
+    const { userId } = res.locals.user;
+    const { creditCardId } = req.params;
+    const creditCards = await creditCardService.get(parseInt(creditCardId), userId);
+    res.status(200).send(creditCards);
+}
