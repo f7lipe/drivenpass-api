@@ -1,87 +1,182 @@
-# <p align = "center"> Driven Pass </p>
+# <p align = "center"> Driven Pass API </p>
 
 <p align="center">
    <img src="https://help.apple.com/assets/615642ECF3D4C61D4B04CB81/615642EEF3D4C61D4B04CB88/pt_BR/89cb0ce060eea823d93714c287a7c268.png"/>
 </p>
 
 <p align = "center">
-   <img src="https://img.shields.io/badge/author-FILIPE-4dae71?style=flat-square" />
-   <img src="https://img.shields.io/github/languages/count/SEU_NOME/NOME_DO_PROJETO?color=4dae71&style=flat-square" />
+   <img src="https://img.shields.io/badge/author-FILIPE_CORREIA-4dae71?style=flat-square" />
+   <img src="https://img.shields.io/github/languages/count/f7lipe/projeto19-drivenpass?color=4dae71&style=flat-square" />
 </p>
 
 
-##  :clipboard: Descrição
+##  :clipboard: Description
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna massa, mollis id facilisis ut, tristique convallis dolor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas a egestas sapien, lacinia iaculis nisi. Nam molestie fringilla egestas. Vestibulum pulvinar consequat arcu a varius. Vestibulum nec finibus enim. In at lobortis elit. Mauris imperdiet neque quis imperdiet ornare. Maecenas non nulla orci. Vestibulum tempor vitae tortor eget lobortis. Integer sapien eros, condimentum sit amet est at, vulputate efficitur elit. Praesent in velit pharetra, commodo libero a, egestas leo. Sed nunc enim, sodales vel pretium at, sodales a magna. Mauris nec nibh at enim venenatis faucibus. Duis bibendum commodo mattis. Phasellus luctus felis varius porta lacinia.
-![image](https://user-images.githubusercontent.com/16584058/179430664-be1b5167-8c48-4957-97b2-24390511806e.png)
+Browsing the internet can be a very fun activity, but at the same time, very dangerous. Numerous studies and surveys (national and international) show that the number of virtual scams continues to grow. Which raises the question: how to protect ourselves? This API allows you to securely store your credit card information, websites, wifi credentials, notes and more.
 
 ***
-![image](https://user-images.githubusercontent.com/16584058/179430626-52910d6c-3e97-4499-b803-020dab080bee.png)
 
-## :computer:	 Tecnologias e Conceitos
+## :computer:	 Technologies and concepts 
 
 - REST APIs
 - JWTs & refresh tokens
 - Node.js
 - TypeScript
-- MongoDB with Mongoose
+- ORM 
+- SQL
 
 ***
 
-## :rocket: Rotas
-
+## :rocket: Routes
+### 🏠 Authentication 
 ```yml
-POST /cadastro
-    - Rota para cadastrar um novo usuário
+POST /signup
+    - Route to register a new user
     - headers: {}
     - body:{
-        "nome": "Lorem ipsum",
-        "email": "lorem@gmail.com",
+        "email": "lorem@loremipsum.com",
         "senha": "loremipsum"
 }
 ```
     
 ```yml 
-POST /login
-    - Rota para fazer login
+POST /signin
+    - Route to sign in 
     - headers: {}
     - body: {
-    "email": "lorem@gmail.com",
-    "senha": "loremipsum"
+    "email": "lorem@loremipsum.com",
+    "password": "loremipsum"
     }
 ```
-    
+### 🌐 Website credentials 
 ```yml 
-GET /usuarios (autenticada)
-    - Rota para listar todos os usuários
+POST /credential (authenticated)
+    - Route to create a credential
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {
+    "email": "ipsum@dolor.set",
+    "password": "ipsumlorem",
+    "title": "My beautiful instagram credentials",
+    "url": "https://instagram.com/
+    }
+```
+```yml 
+GET /credential/:credentialId (authenticated)
+    - Get specific credential of an authenticated user
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {}
+```    
+```yml 
+GET /credential/= (authenticated)
+    - Get all credentials of an authenticated user
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
 
 ```yml
-GET /usuarios/:id (autenticada)
-    - Rota para listar um usuário pelo id
+DELETE /credential/:credentialId (authenticated)
+    - Delete specific credential of an authenticated user
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ``` 
 
-```yml
-PUT /usuarios/:id (autenticada)
-    - Rota para atualizar um usuário pelo id
+### 📶  Wi-fi credentials 
+```yml 
+POST /wifi (authenticated)
+    - Route to create a wi-fi credential
     - headers: { "Authorization": "Bearer $token" }
     - body: {
-        "nome": "Lorem ipsum2",
-        "email": "lorem2@gmail.com",
-        "senha": "loremipsum2"
+    "ssid": "Pergasus",
+    "password": "ipsumlorem",
+    "title": "Personal hotspot"
     }
 ```
- 
-```yml
-DELETE /usuarios/:id (autenticada)
-    - Rota para deletar um usuário pelo id
+```yml 
+GET /wifi/:wifiId (authenticated)
+    - Get specific wi-fi credential of an authenticated user
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {}
+```    
+```yml 
+GET /wifi/= (authenticated)
+    - Get all wi-fi credentials of an authenticated user
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
+
+```yml
+DELETE /wifi/:wifiID (authenticated)
+    - Delete specific wi-fi credential of an authenticated user
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {}
+``` 
+
+### 🗒️  Safe notes 
+```yml 
+POST /safenote (authenticated)
+    - Route to create a safe note
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {
+    "title": "My lovely secret",
+    "content": "Lorem ipsum dolor set"
+    }
+```
+```yml 
+GET /safenote/:safenoteId (authenticated)
+    - Get specific safe note of an authenticated user
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {}
+```    
+```yml 
+GET /safenote/= (authenticated)
+    - Get all safe notes of an authenticated user
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {}
+```
+
+```yml
+DELETE /safenote/:safenoteID (authenticated)
+    - Delete safe note credential of an authenticated user
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {}
+``` 
+
+### 💳  Credit card credentials 
+```yml 
+POST /credit-card (authenticated)
+    - Route to create a safe note
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {
+    "name": "Coleman 9ea02f8ca4f1",
+     "number": "1494-2313-1244-11",
+     "expiry": "07/2030",
+     "cvv": 289,
+     "password": 1984,
+     "isVirtual": false,
+     "type": "Credit",
+     "title": "My purple MasterCard CC"
+}
+```
+```yml 
+GET /credit-card/:creditCardId (authenticated)
+    - Get specific credit card of an authenticated user
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {}
+```    
+```yml 
+GET /credit-card/= (authenticated)
+    - Get all credit cards of an authenticated user
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {}
+```
+
+```yml
+DELETE /credit-card/:creditCardId (authenticated)
+    - Delete credit card credentials of an authenticated user
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {}
+``` 
+
 ***
 
 ## 🏁 Rodando a aplicação
