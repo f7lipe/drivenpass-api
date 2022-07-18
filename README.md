@@ -217,4 +217,7 @@ npm run dev
 ```
 
 ⚠️ If your .env file is set to MODE = DEV all creation routes will return an object with the information entered into the database
-### 🔥 Hot tip: If you are using Thunder Client, import the thunder_client_template.json to your Thunder Client extension and enjoy the benefits of all routes already configured.
+
+
+### 🔥 Hot tip 
+If you are using Thunder Client, import the thunder_client_template.json to your Thunder Client extension and enjoy the benefits of all routes already configured.
