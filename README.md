@@ -105,7 +105,7 @@ GET /wifi/= (authenticated)
 ```
 
 ```yml
-DELETE /wifi/:wifiID (authenticated)
+DELETE /wifi/:wifiId (authenticated)
     - Delete specific wi-fi credential of an authenticated user
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -135,7 +135,7 @@ GET /safenote/= (authenticated)
 ```
 
 ```yml
-DELETE /safenote/:safenoteID (authenticated)
+DELETE /safenote/:safenoteId (authenticated)
     - Delete safe note credential of an authenticated user
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -179,25 +179,42 @@ DELETE /credit-card/:creditCardId (authenticated)
 
 ***
 
-## 🏁 Rodando a aplicação
+## 🏁 Running the aplication 
 
-Este projeto foi inicializado com o [Create React App](https://github.com/facebook/create-react-app), então certifique-se que voce tem a ultima versão estável do [Node.js](https://nodejs.org/en/download/) e [npm](https://www.npmjs.com/) rodando localmente.
+This project was initialized with [Create React App](https://github.com/facebook/create-react-app), so make sure you have the latest stable version of [Node.js](https:/ /nodejs.org/en/download/) and [npm](https://www.npmjs.com/) running locally.
 
-Primeiro, faça o clone desse repositório na sua maquina:
+⤵️ Clone this repository on your machine:
 
 ```
 git clone https://github.com/luanalessa/projeto-backend.git
 ```
 
-Depois, dentro da pasta, rode o seguinte comando para instalar as dependencias.
+⚙️ Create a .env file in the root of your project folder and configute it to look something like this
+```yml
+   PORT = 5000
+   DATABASE_URL = postgres://postgres:password6@database_url/database_name
+   MODE = DEV
+   JWT_SECRET = "secret"
+   CRYPT_KEY = "secret"
+``` 
+
+
+💻 Inside the folder, run the following command to install the dependencies.
 
 ```
 npm install
 ```
 
-Finalizado o processo, é só inicializar o servidor
+🗃️ Build the database
+
 ```
-npm start
+npx prisma push
 ```
 
-:stop_sign: Não esqueça de repetir os passos acima com o [repositório](https://github.com/luanalessa/projeto-frontend.git) que contem a interface da aplicação, para testar o projeto por completo.
+🏁 Finished the process, just start the server
+```
+npm run dev
+```
+
+⚠️ If your .env file is set to MODE = DEV all creation routes will return an object with the information entered into the database
+### 🔥 Hot tip: If you are using Thunder Client, import the thunder_client_template.json to your Thunder Client extension and enjoy the benefits of all routes already configured.
