@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
 import { wifi } from "../schemas/wifiSchema.js";
 import * as wifiService from "../services/wifiService.js";
+import { testingUtil } from "../utils/testingUtil.js";
 
 export async function create(req: Request, res: Response) {
     const { userId } = res.locals.user;
     const wifi: wifi = { userId, ...req.body };
-    await wifiService.create(wifi);
-    res.sendStatus(201);
+    const createdWifi = await wifiService.create(wifi);
+    res.status(201).send(testingUtil(createdWifi));
 }
 
 export async function get(req: Request, res: Response) {

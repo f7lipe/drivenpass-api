@@ -6,7 +6,7 @@ import { cryptr } from "../config/cryptConfig.js";
 export async function create(wifi: wifi) {
     const encryptedPassword = cryptr.encrypt(wifi.password)
     const newWifi = { ...wifi, password: encryptedPassword };
-    await wifiRepository.createOne(newWifi);
+    return await wifiRepository.createOne(newWifi);
 }
 
 export async function get(wifiId: number, userId: number) {

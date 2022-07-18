@@ -2,7 +2,7 @@ import { prisma } from "../config/database.js";
 import { safeNote } from "../schemas/safeNoteSchema.js";
 
 export async function createOne(safeNote: safeNote) {
-    await prisma.safeNote.create({
+    return await prisma.safeNote.create({
         data: {
             ...safeNote
         }

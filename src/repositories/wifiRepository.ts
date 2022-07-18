@@ -4,7 +4,7 @@ import { wifi } from "../schemas/wifiSchema.js";
 
 
 export async function createOne(wifi: wifi) {
-    await prisma.wifi.create({
+   return  await prisma.wifi.create({
         data: {
             ...wifi
         }

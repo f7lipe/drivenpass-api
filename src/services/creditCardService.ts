@@ -10,7 +10,7 @@ export async function create(creditCard: creditCard) {
         cvv: encryptedCVV,
         password: encryptedPassword
     }
-    await creditCardRepository.createOne(newCreditCard);
+    return await creditCardRepository.createOne(newCreditCard);
 }
 
 export async function get(id: number, userId: number) {
