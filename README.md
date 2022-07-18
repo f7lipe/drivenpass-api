@@ -147,7 +147,7 @@ POST /credit-card (authenticated)
     - Route to create a safe note
     - headers: { "Authorization": "Bearer $token" }
     - body: {
-    "name": "Coleman 9ea02f8ca4f1",
+    "name": "Coleman R C Gallant",
      "number": "1494-2313-1244-11",
      "expiry": "07/2030",
      "cvv": 289,
