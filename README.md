@@ -186,7 +186,7 @@ This project was initialized with [Create React App](https://github.com/facebook
 ⤵️ Clone this repository on your machine:
 
 ```
-git clone https://github.com/luanalessa/projeto-backend.git
+git clone https://github.com/f7lipe/projeto19-drivenpass
 ```
 
 ⚙️ Create a .env file in the root of your project folder and configute it to look something like this
@@ -208,7 +208,7 @@ npm install
 🗃️ Build the database
 
 ```
-npx prisma push
+npx prisma db push
 ```
 
 🏁 Finished the process, just start the server
